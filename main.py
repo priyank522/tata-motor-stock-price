@@ -1,6 +1,5 @@
 import matplotlib.pyplot as plt
 from sklearn.metrics import accuracy_score
-from Ensemble import _ensemble_model
 from KNN_model import _train_KNN
 from Random_Forest import _train_random_forest
 from libraries import *
@@ -12,7 +11,7 @@ warnings.filterwarnings('always')
 
 NUM_DAYS = 250    # The number of days of historical data to retrieve
 INTERVAL = '1d'     # Sample rate of historical data
-symbol = 'AWL.NS'      # Symbol of the desired stock
+symbol = 'TATAMOTORS.NS'      # Symbol of tatamotors
 # List of symbols for technical indicators
 INDICATORS = ['RSI', 'MACD', 'STOCH','ADL', 'ATR', 'MOM', 'MFI', 'ROC', 'OBV', 'CCI', 'EMV', 'VORTEX']
 
@@ -122,33 +121,35 @@ def cross_Validation(data):
 
         rf_model = _train_random_forest(X_train, y_train, X_test, y_test)
         knn_model = _train_KNN(X_train, y_train, X_test, y_test)
-        ensemble_model = _ensemble_model(rf_model, knn_model, X_train, y_train, X_test, y_test)
 
         rf_prediction = rf_model.predict(X_test)
         knn_prediction = knn_model.predict(X_test)
-        ensemble_prediction = ensemble_model.predict(X_test)
 
         print('rf prediction is ', rf_prediction)
         print('knn prediction is ', knn_prediction)
-        print('ensemble prediction is ', ensemble_prediction)
         print('truth values are ', y_test.values)
 
         rf_accuracy = accuracy_score(y_test.values, rf_prediction)
         knn_accuracy = accuracy_score(y_test.values, knn_prediction)
-        ensemble_accuracy = accuracy_score(y_test.values, ensemble_prediction)
 
-        print(rf_accuracy*100, knn_accuracy*100, ensemble_accuracy*100)
+        print(rf_accuracy*100, knn_accuracy*100)
         rf_RESULTS.append(rf_accuracy)
         knn_RESULTS.append(knn_accuracy)
-        ensemble_RESULTS.append(ensemble_accuracy)
+
     try:
         print('RF Accuracy = ' + str((sum(rf_RESULTS) / len(rf_RESULTS))*100)+"%")
         print('KNN Accuracy = ' + str((sum(knn_RESULTS) / len(knn_RESULTS))*100) +"%")
-        print('Ensemble Accuracy = ' + str((sum(ensemble_RESULTS) / len(ensemble_RESULTS))*100)+"%")
+
         live_pred_data['close'].plot()
         del (live_pred_data['close'])
-        prediction = ensemble_model.predict(live_pred_data)
+        prediction = knn_model.predict(live_pred_data)
         print("pridiction for after 15days after today:",prediction)
+
+        for i in prediction:
+            if(i==0):
+                print("stock will go down")
+            else:
+                print("stock will go up")
     except ZeroDivisionError:
         print("zero division error")
 
