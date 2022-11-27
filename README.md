@@ -53,14 +53,14 @@ def _exponential_smooth(data, alpha):
 
 ## Credits:
 
-#### patel priyank :
+#### Patel Priyank :
 * work on data cleaning process, random forest module.
 * Contributed in README and PPT.
 
-#### mitali nmistry :
+#### Mitali Mistry :
 * work on data cleaning, data visulization and KNN model.
 * Contributed in README and PPT.
 
-### vivek prajapati.
+### vivek Prajapati.
 * work on data cleaning and sloving errors.
-* contrbuted in  README and ppt. 
+* contrbuted in README and ppt. 
