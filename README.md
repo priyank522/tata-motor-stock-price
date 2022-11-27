@@ -1,4 +1,4 @@
-# tata-motor-stock-price
+# tata-motor-stock-prediction 
 
 This is python and datascience project to predict stock value which will give predict stock go up or own after 15 days from today.
 
@@ -53,7 +53,7 @@ def _exponential_smooth(data, alpha):
 
 ## Credits:
 
-#### Patel Priyank :
+#### Patel Priyank  :
 * work on data cleaning process, random forest module.
 * Contributed in README and PPT.
 
@@ -61,6 +61,6 @@ def _exponential_smooth(data, alpha):
 * work on data cleaning, data visulization and KNN model.
 * Contributed in README and PPT.
 
-### vivek Prajapati.
+### vivek  prajapati :
 * work on data cleaning and sloving errors.
 * contrbuted in README and ppt. 
