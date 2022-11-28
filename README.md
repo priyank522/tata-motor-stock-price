@@ -59,8 +59,4 @@ def _exponential_smooth(data, alpha):
 
 #### Mitali Mistry :
 * work on data cleaning, data visulization and KNN model.
-* Contributed in README and PPT.
-
-### vivek  prajapati :
-* work on data cleaning and sloving errors.
-* contrbuted in README and ppt. 
+* Contributed in README and PPT. 
